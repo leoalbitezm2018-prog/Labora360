@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Labora360 IA</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <img src="{{ url_for('static', filename='img/logo.png.png') }}"
+     alt="Labora360">
+
+        <div>
+            <h1>Labora360</h1>
+            <p>Outsourcing • RRHH • Asesoría Laboral • SST</p>
+        </div>
+
+    </header>
+
+    <div id="chat-box">
+
+        <div class="bot-message">
+            Bienvenido a Labora360.
+            ¿En qué puedo ayudarte?
+        </div>
+
+    </div>
+
+    <div class="input-area">
+
+        <input
+            type="text"
+            id="mensaje"
+            placeholder="Escribe tu consulta..."
+        >
+
+        <button onclick="enviarMensaje()">
+            Enviar
+        </button>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+
+</body>
+</html>
