@@ -1,5 +1,25 @@
 async function enviarMensaje() {
-    const mensaje = document.getElementById("mensaje").value;
+
+    const mensajeInput = document.getElementById("mensaje");
+    const chatBox = document.getElementById("chat");
+
+    const mensaje = mensajeInput.value;
+
+    if (!mensaje) return;
+
+    chatBox.innerHTML += `
+        <div class="usuario">
+            <strong>Tú:</strong> ${mensaje}
+        </div>
+    `;
+
+    chatBox.innerHTML += `
+        <div class="ia">
+            <strong>Labora360:</strong> está resolviendo tu consulta...
+        </div>
+    `;
+
+    mensajeInput.value = "";
 
     const respuesta = await fetch("/chat", {
         method: "POST",
@@ -12,4 +32,12 @@ async function enviarMensaje() {
     });
 
     const data = await respuesta.json();
+
+    chatBox.innerHTML += `
+        <div class="ia">
+            <strong>Labora360:</strong> ${data.respuesta}
+        </div>
+    `;
+
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
